@@ -34,6 +34,9 @@ MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 
 STATIC_URL="/static/"
 STATIC_ROOT=os.path.join(BASE_DIR,"static")
+STATICFILES_DIRS=(
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Application definition
 
@@ -57,8 +60,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'student_management_app.LoginCheckMiddleWare.LoginCheckMiddleWare'
+    'student_management_app.LoginCheckMiddleWare.LoginCheckMiddleWare',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'student_management_system.urls'
 
